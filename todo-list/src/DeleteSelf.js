@@ -7,7 +7,7 @@ const DeleteSelf = (props) => {
   return (
     <span
       onClick={delSelf}
-      className={props.clasame}
+      className={props.del_classname}
     >
       X
     </span>

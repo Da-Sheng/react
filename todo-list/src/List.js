@@ -35,6 +35,7 @@ const List = (props) => {
                 tarValue={value.content}
                 callbackDid={props.callbackDid}
                 callbackDel={props.callbackDel}
+                callbackSelectSelf={props.callbackSelectSelf}
                 index={index}
             />
         );

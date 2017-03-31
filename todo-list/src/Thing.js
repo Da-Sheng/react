@@ -1,14 +1,12 @@
 import React from "react";
 
 const Thing = (props) => {
-	const delSelf = () => {
-    props.callback2(props.index)
-  }
+	
 	return (
 		<span
-			onClick={delSelf} 
+			// onClick={delSelf} 
 			id={props.id} 
-			className={props.clasame}
+			className={props.thing_classname}
 		>
 		 	{props.tarValue}
 		</span>

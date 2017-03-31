@@ -25,7 +25,20 @@ class App extends Component {
       ]
     })
   }
-
+  selectSelf = (index) => {
+    let todoList = [...this.state.todoList];
+    let preStatus = todoList[index].status;
+    let nextStatus = '';
+    if (preStatus === 'undo'){
+      nextStatus = 'done';
+    }else{
+      nextStatus = 'undo';
+    }
+    todoList[index].status = nextStatus;
+    this.setState({
+      todoList: todoList
+    });
+  }
   deleteSelf = (index) => {
     console.log(index);
         let todoArr = this.state.todoList;
@@ -51,6 +64,7 @@ class App extends Component {
           filter={this.state.filter}
           callbackDel={this.deleteSelf} 
           callbackDid={this.changeDid}
+          callbackSelectSelf={this.selectSelf}
         />
       </div>
     );

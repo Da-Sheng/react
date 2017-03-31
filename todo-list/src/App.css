@@ -31,14 +31,14 @@
 li{
   list-style: none;
 }
-.notdone{
+.not-done{
   color: black;
 }
-.hasdone{
+.has-done{
   color: grey;
   text-decoration: line-through;
 }
-.deleteSelf{
+.delete-self{
   position: relative;
   left: 50px;
 }
@@ -47,4 +47,17 @@ li{
 }
 .visvis{
   visibility: visible;
+}
+.select-span{
+  display: inline-block;
+  border: 1px solid;
+  width: 30px;
+  height: 30px;
+  border-radius:50%; 
+}
+.has-selected{
+  background: grey
+}
+.unselected{
+  
 }

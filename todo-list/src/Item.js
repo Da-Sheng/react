@@ -1,92 +1,57 @@
-import React, { Component } from "react";
+import React from "react";
 import Thing from './Thing';
-// import DeleteSelf from './DeleteSelf';
-class Item extends Component {
-	// constructor(props) {
-	//     super(props);
-	//         console.log(this.props.isDid)
-	//     this.state = {
-	//         isDid: this.props.isDid,
-	//         isHidden: true
-	//     };
-	// }
-	// doThings = () => {
-	//     let id = this.props.id - 1;
-	//     this.setState({
-	//         isDid: true
-	//     },() => {
-	//         console.log(this.props.isDid)
-	//         this.props.callbackDid(id);
-	//     })
-	// }
-	// todoThings = () => {
-	//     let id = this.props.id - 1;
-	//     this.setState({
-	//         isDid: false
-	//     },() => {
-	//         console.log(this.props.isDid)
-	//         this.props.callbackDid(id);
-	//     })
-	// }
-	// findId = () => {
-	//     let id = this.props.id - 1;
-	//     this.props.callbackDel(id);
-	// }
-	// hiddenX = () => {
-	//     this.setState({
-	//         isHidden: true
-	//     })
-	// }
-	// showX = () => {
-	//     this.setState({
-	//         isHidden: false
-	//     })
-	// }
-	render() {
-		const status = this.props.status;
-		// const isHidden = this.state.isHidden;
-		let inner = [];
-		switch (status) {
-			case 'done':
-				inner[0] = <Thing
-										callback={this.todoThings}
-										id={this.props.id}
-										key="1"
-										clasame='hasdone'
-										tarValue={this.props.tarValue}
-									/>;
-				break;
-			case 'undo':
-				inner[0] = <Thing
-										callback={this.doThings}
-										id={this.props.id}
-										key="1"
-										clasame='notdone'
-										tarValue={this.props.tarValue}
-										callbackDel={this.props.callbackDel}
-										index={this.props.index}
-									/>
-				break;
-			default:
-				break;
-		}
-		// if (isDid) {
-		//     inner[0] = <Thing callback={this.todoThings} id={this.props.id} key="1" clasame='hasdone' tarValue={this.props.tarValue} />;
-		// } else {
-		//     inner[0] = <Thing callback={this.doThings} id={this.props.id} key="1" clasame='notdone' tarValue={this.props.tarValue} />
-		// }
-		// if (isHidden) {
-		// 	inner[1] = <DeleteSelf callback={this.findId} key="2" clasame='vishid deleteSelf' />
-		// } else {
-		// 	inner[1] = <DeleteSelf callback={this.findId} key="2" clasame='visvis deleteSelf' />
-		// }
-		let oLi = <li id={this.props.id} >
-			{inner}
-		</li>
-		return (
-			oLi
-		)
+import SelectSelf from './SelectSelf';
+import DeleteSelf from './DeleteSelf';
+const Item = (props) => {
+	let inner = [];
+	let options = {};
+	const status = props.status;
+	//creat Item JSXDOM
+	const creatItemDom = (options) => {
+		inner[0] = <SelectSelf
+								callbackSelectSelf={props.callbackSelectSelf}
+								select_classname={options.select_classname}
+								index={props.index}
+								key='0'
+							/>;
+		inner[1] = <Thing
+								id={props.id}
+								key="1"
+								thing_classname={options.thing_classname}
+								tarValue={props.tarValue}
+							/>;
+		inner[3] = <DeleteSelf
+								del_classname='delete-self'
+								callbackDel={props.callbackDel}
+								index={props.index}
+							/>
 	}
+
+	switch (status) {
+		case 'done':
+			options = {
+				select_classname: 'select-span has-selected',
+				thing_classname: 'has-done'
+			};
+			creatItemDom(options);
+			break;
+		case 'undo':
+			options = {
+				select_classname: 'select-span unselected',
+				thing_classname: 'not-done'
+			};
+			creatItemDom(options);
+			break;
+		default:
+			break;
+	}
+
+	let oLi = <li id={props.id} >
+							{inner}
+						</li>
+	return (
+		oLi
+	)
 }
 
-export default Item;
+export default Item; 
