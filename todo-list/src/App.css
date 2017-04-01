@@ -1,35 +1,45 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+::-moz-placeholder { 
+  color: rgba(0, 0, 0, 0.1);
+  font-style: italic;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+::-webkit-input-placeholder {
+  color:rgba(0, 0, 0, 0.1); 
+  font-style: italic;
 }
-
-.App-intro {
-  font-size: large;
+:-ms-input-placeholder { 
+  color:rgba(0, 0, 0, 0.1); 
+  font-style: italic;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#root{
+  width: 420px;
+  margin: 40px auto;
 }
 .todoInput{
-  height: 20px;
-  width: 200px;
-  text-align: center;
+  height: 50px;
+  width: 400px;
+  /*text-align: center;*/
+  text-indent: 20px;
+  letter-spacing: 2px;
   margin: 20px auto;
+  outline: none;
+  font-size: 30px;
 }
 li{
   list-style: none;
+}
+.todo-li{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; 
+  height: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 15px;
+  left: -20px;
 }
 .not-done{
   color: black;
@@ -39,8 +49,9 @@ li{
   text-decoration: line-through;
 }
 .delete-self{
-  position: relative;
-  left: 50px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 .visibility-hidden{
   visibility: hidden;
@@ -50,9 +61,11 @@ li{
 }
 .select-span{
   display: inline-block;
-  border: 1px solid;
-  width: 30px;
-  height: 30px;
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  left: 0;
+  width: 20px;
+  height: 20px;
   border-radius:50%; 
 }
 .has-selected{
@@ -69,7 +82,7 @@ li{
   border: 1px solid white;
 }
 .has-fifter{
-  border: 1px solid orangered;
+  border: 1px solid rgba(175, 47, 47, 0.3);
 }
 .clear-done{
   display: inline-block;
@@ -84,4 +97,21 @@ li{
   border-radius: 20%;
   cursor: pointer;
   border: 1px solid grey;
+}
+.footer{
+  position: relative;
+  vertical-align: middle;
+}
+.footer::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 10px;
+    width: 400px;
+    vertical-align: middle;
+    height: 50px;
+    z-index: -1;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
