@@ -4,17 +4,22 @@ class Input extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ""
+            value: "",
+            index: 0
         };
     }
     getValue = (e) => {
         //事件的兼容
         e = (e) ? e : ((window.event) ? window.event : "")
         let keyCode = e.keyCode ? e.keyCode : (e.which ? e.which : e.charCode);
+        let index = this.state.index;
+
         if (keyCode === 13) {
-            this.props.callback(e.target.value);
+            this.props.callback(e.target.value,index);
+            index++;
             this.setState({
-                value: ''
+                value: '',
+                index: index
             });
         }
     }

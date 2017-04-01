@@ -5,8 +5,15 @@ import DeleteSelf from './DeleteSelf';
 const Item = (props) => {
 	let inner = [];
 	let options = {};
+	const showX = () => { 
+		props.callbackShow(props.index);
+	};
+	const hiddenX = () => { 
+		props.callbackHidden(props.index);
+	};
+	
 	const status = props.status;
-	//creat Item JSXDOM
+	//create Item JSXDOM
 	const creatItemDom = (options) => {
 		inner[0] = <SelectSelf
 								callbackSelectSelf={props.callbackSelectSelf}
@@ -21,9 +28,11 @@ const Item = (props) => {
 								tarValue={props.tarValue}
 							/>;
 		inner[3] = <DeleteSelf
-								del_classname='delete-self'
 								callbackDel={props.callbackDel}
 								index={props.index}
+								key="2"
+								del_classname={props.del_classname}
+								isHover={props.isHover}
 							/>
 	}
 
@@ -46,9 +55,12 @@ const Item = (props) => {
 			break;
 	}
 
-	let oLi = <li id={props.id} >
-							{inner}
-						</li>
+	let oLi = <li
+							onMouseOver={showX}
+							onMouseOut={hiddenX}
+						>
+		{inner}
+	</li>
 	return (
 		oLi
 	)

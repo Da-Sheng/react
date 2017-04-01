@@ -5,9 +5,6 @@ const List = (props) => {
     let filter = props.filter;
     const todoArr = props.todoArr;
     let arr = [];
-    //  const todoArr = props.todoArr.filter(function(value){
-    //                     return value.status === filter;
-    //                 });
     switch (filter) {
         case 'all':
             arr = todoArr.filter(function (value) {
@@ -27,7 +24,7 @@ const List = (props) => {
         default:
             break;
     }
-    let list = arr.map((value, index) => {
+    let list = arr.map((value, index,arr) => {
         return (
             <Item
                 key={index}
@@ -36,7 +33,11 @@ const List = (props) => {
                 callbackDid={props.callbackDid}
                 callbackDel={props.callbackDel}
                 callbackSelectSelf={props.callbackSelectSelf}
-                index={index}
+                callbackShow={props.callbackShow}
+                callbackHidden={props.callbackHidden}
+                index={value.index}
+                del_classname={value.del_classname}
+                isHover={value.ishover}
             />
         );
     });
