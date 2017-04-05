@@ -58,6 +58,7 @@ const Item = (props) => {
 	let oLi = <li
 							onMouseOver={showX}
 							onMouseOut={hiddenX}
+							className='todo-li'
 						>
 		{inner}
 	</li>
