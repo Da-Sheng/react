@@ -27,7 +27,7 @@ const Item = (props) => {
 								thing_classname={options.thing_classname}
 								tarValue={props.tarValue}
 							/>;
-		inner[3] = <DeleteSelf
+		inner[2] = <DeleteSelf
 								callbackDel={props.callbackDel}
 								index={props.index}
 								key="2"
