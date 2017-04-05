@@ -42,7 +42,7 @@ const List = (props) => {
         );
     });
     return (
-        <ul className="myList">
+        <ul className="my-list">
             {list}
         </ul>
     )

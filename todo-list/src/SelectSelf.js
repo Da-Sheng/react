@@ -8,6 +8,7 @@ const SelectSelf = (props) => {
 						className={props.select_classname}
 						onClick={selectDo}
 					>
+					✔️
 					</span>)
 }
 

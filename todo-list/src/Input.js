@@ -15,6 +15,9 @@ class Input extends Component {
         let index = this.state.index;
 
         if (keyCode === 13) {
+            if(!e.target.value){
+                return;
+            }
             this.props.callback(e.target.value,index);
             index++;
             this.setState({

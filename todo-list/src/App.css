@@ -30,16 +30,21 @@
 li{
   list-style: none;
 }
+
 .todo-li{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px; 
-  height: 15px;
+  /*height: 15px;*/
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 15px;
   left: -20px;
+}
+.do-thing{
+  word-break: break-all;
+  width: 300px;
 }
 .not-done{
   color: black;
@@ -52,6 +57,7 @@ li{
   position: absolute;
   right: 20px;
   cursor: pointer;
+  color: #cc9a9a;
 }
 .visibility-hidden{
   visibility: hidden;
@@ -69,10 +75,12 @@ li{
   border-radius:50%; 
 }
 .has-selected{
-  background: grey
+  line-height: 20px;
+  cursor: pointer;
 }
 .unselected{
-
+  color: rgba(0, 255, 127, 0);
+  cursor: pointer;
 }
 .fifter{
   display: inline-block;
@@ -81,14 +89,20 @@ li{
   cursor: pointer;
   border: 1px solid white;
 }
-.has-fifter{
+.fifter:hover{
   border: 1px solid rgba(175, 47, 47, 0.3);
+}
+.has-fifter{
+  border: 1px solid rgba(175, 47, 47, 0.5);
 }
 .clear-done{
   display: inline-block;
   margin-left: 10px;
-  border-radius: 20%;
+  border-radius: 10%;
   cursor: pointer;
+  border: 1px solid white;
+}
+.clear-done:hover{
   border: 1px solid grey;
 }
 .all-done{
@@ -96,11 +110,15 @@ li{
   margin-left: 10px;
   border-radius: 20%;
   cursor: pointer;
+  border: 1px solid white;
+}
+.all-done:hover{
   border: 1px solid grey;
 }
 .footer{
   position: relative;
   vertical-align: middle;
+  padding-bottom: 10px;
 }
 .footer::after{
     content: '';
@@ -113,5 +131,11 @@ li{
     height: 50px;
     z-index: -1;
     overflow: hidden;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+.visibility-hidden{
+  visibility: hidden;
+}
+.visibility-visible{
+  visibility: visible;
 }

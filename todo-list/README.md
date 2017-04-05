@@ -18,3 +18,17 @@ delete,
 deleteAll,
 filter,
 toggleStatus,
+
+##Install
+-------
+
+```
+npm i .
+```
+
+##Run dev
+------
+
+```
+npm start
+```

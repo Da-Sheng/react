@@ -14,7 +14,7 @@ const Filter = (props) => {
 		props.callbackFilterDone();
 	}
 	return (
-		<div>
+		<div className={props.fifter_div_classname}>
 			<span
 				className={props.filter_classname[0]}
 				onClick={selectCurrent0}

@@ -14,6 +14,8 @@ class App extends Component {
         'fifter',
         'fifter'
       ],
+      isHasList: false,
+      fifter_div_classname: 'footer visibility-hidden'
     };
   }
 // 获取输入框数据
@@ -26,13 +28,16 @@ class App extends Component {
           createTime: currentTime,
           updateTime: currentTime,
           ishover: false,
-          index
+          index,
           // del_classname: 'delete-self visibility-hidden'
         },
         ...this.state.todoList
       ];
     this.setState({
-      todoList
+      todoList,
+      isHasList: true,
+    },() => {
+      this.displayFilter();
     });
   }
 //鼠标切换叉叉显示
@@ -93,8 +98,12 @@ class App extends Component {
   	let index = this.handleIndex(idx);
     let todoList = [...this.state.todoList];
     todoList.splice(index, 1);
+    let isHasList = this.decideHasDelAll(todoList);
     this.setState({
-      todoList
+      todoList,
+      isHasList
+    },() => {
+      this.displayFilter();
     });
   }
   //选择所有
@@ -118,21 +127,65 @@ class App extends Component {
   //删除已做状态
   clearDone = () => {
     let todoList = [...this.state.todoList].filter(x => x.status==='undo');
+    let isHasList = this.decideHasDelAll(todoList);
     this.setState({
-      todoList
+      todoList,
+      isHasList,
+    },() => {
+      this.displayFilter();
     });
   }
   //全做
   doneAll = () => {
-    let todoList = [...this.state.todoList].map(
+    let todoList = [...this.state.todoList];
+    let isDoneAll = this.judgeSelectAll(todoList);
+    let status = 'done';
+    if(isDoneAll){
+      status = 'undo';
+    }
+    todoList.map(
       x => {
-        x.status='done';
+        x.status=status;
         return x;
       }
     );
     this.setState({
       todoList
     });
+  }
+  //判断全选
+  judgeSelectAll = (todoList) => {
+    return todoList.every(x => x.status === 'done');
+    
+  }
+  //显示隐藏底部的选择框
+  displayFilter = () => {
+    let isHasList = this.state.isHasList;
+    if(isHasList){
+      this.setState({
+        fifter_div_classname: 'footer visibility-visible'
+      })
+    }else{
+      this.setState({
+        fifter_div_classname: 'footer visibility-hidden'
+      })
+    }
+  }
+  //判断是否全部删除
+  decideHasDelAll = (todoList) => {
+    let len = todoList.length;
+    // debugger;
+    if(!len){
+      return false;
+    }else{
+      todoList = [...todoList].filter(x => x!==undefined);
+      len = todoList.length;
+      if(len){
+        return true;
+      }else{
+        return false;
+      }
+    }
   }
   render() {
     return (
@@ -158,6 +211,7 @@ class App extends Component {
           callbackFilterDone={this.filterDone}
           callbackClearDone={this.clearDone}
           callbackDoneAll={this.doneAll}
+          fifter_div_classname={this.state.fifter_div_classname}
         />
       </div>
     );

@@ -40,14 +40,14 @@ const Item = (props) => {
 		case 'done':
 			options = {
 				select_classname: 'select-span has-selected',
-				thing_classname: 'has-done'
+				thing_classname: 'has-done do-thing'
 			};
 			creatItemDom(options);
 			break;
 		case 'undo':
 			options = {
 				select_classname: 'select-span unselected',
-				thing_classname: 'not-done'
+				thing_classname: 'not-done do-thing'
 			};
 			creatItemDom(options);
 			break;
