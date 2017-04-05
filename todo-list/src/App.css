@@ -58,6 +58,7 @@ li{
   right: 20px;
   cursor: pointer;
   color: #cc9a9a;
+  bottom: 40%;
 }
 .visibility-hidden{
   visibility: hidden;
@@ -70,6 +71,7 @@ li{
   position: absolute;
   border: 1px solid rgba(0, 0, 0, 0.2);
   left: 0;
+  bottom: 40%;
   width: 20px;
   height: 20px;
   border-radius:50%; 
